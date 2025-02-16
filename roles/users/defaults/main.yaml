@@ -1,0 +1,15 @@
+---
+#Note: 'debug_enabled_default: true' will put hashed passwords in the output.
+debug_enabled_default: false
+default_update_password: on_create
+default_shell: /bin/bash
+
+users:
+  - username: ansible
+    comment: Technical ansible user
+    groups: [ansible]
+    ssh_key: |
+      ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDtVw0bG8uMT1zaNFnSNKsNN70coFVKFqnTyd9eqDhXjDSiO+SKR2/erttZzJf8hLe5Js3EsTy9Gfltn9g0XhtQW9Dkd24lRkD+Xe0T9ETa+1eJUhaGiPIoJk/xRrAbj+UdYhGsptZQbS5UPzMKnZf/WfxcnpGipyDPNt+1hFkwgIT0pi6zfbJN/W2twlqxFjqVPxkso3jKvpiyBUNM2ygqs7VXJIEjZe9l9Bl714dggFPoLCj3BebC/nIaf5WIQcU9tG0sxPOFyn0Zcplv6QL7TFAJIr8hTdtRaTE++rnQNOQhtD3Qa7os/gygMjtYqbqasvrqtQBlh9x3j/Ktia6/ryO7Nbf5ENWFRuC8YVNwMOwgCCi+5ULty/zhUWLpsKzB7g95/qXfNDzNxCyfxUco5DoezmvZwnmz5a0qoVTSdRS44xXppktsfseh54LR86pP4Ph5nN7pMT7yKeuX+xTuS8opk+NCS1CsVOD1Jn/V3DDp5fPTX7+eAckngh6T8IZSuKT2D4k54zjWDyuAmb8t1th7NA4LMXuUG+53p/dgVIkTpX9SSfj0s/GsDn4KFUx10JIvimIRnGvQTlTPXPwS6JdTfstaN/BPBVcD1XATj+p7vaLta0yrPXTWwZpcuM4mgsNP0I9rC/urXcuTunFE9HChCG6vo8CkyMY5LgrMYw== apavarnitsyn@Lenovo-14
+    use_sudo: yes
+    use_sudo_nopass: true
+    user_state: present

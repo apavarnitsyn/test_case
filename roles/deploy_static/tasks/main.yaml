@@ -1,0 +1,35 @@
+
+- name: Remove default site
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+  become: yes
+
+
+- name: Copy site config
+  copy:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+  notify: Restart nginx
+
+- name: Copy site config
+  copy:
+    src: site.conf
+    dest: /etc/nginx/sites-enabled/site.conf
+  notify: Restart nginx
+
+- name: Check the path exist
+  file:
+    path: /var/www/html/images/
+    state: directory
+  become: yes
+
+- name: Copy static files
+  copy:
+    src: "{{ item.src }}"
+    dest: "/var/www/html/images/{{ item.path | dirname }}/"
+  with_filetree: "files/static/"
+  when: item.state == 'file'
+  notify: Restart nginx
+  loop_control:
+    label: "{{ item.path }}"

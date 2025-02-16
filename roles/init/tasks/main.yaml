@@ -1,0 +1,11 @@
+
+- name: install apt packages
+  apt:
+    name: [ "{{ item }}" ]
+  with_items:
+    - htop 
+    - ncdu
+    - git
+    - nano
+  loop_control:
+    label: "{{ item }}"

@@ -1,0 +1,12 @@
+---
+- name: Playbook
+  gather_facts: true
+  hosts: ubuntu
+  become: yes
+
+  roles: 
+    - users
+    - ssh
+    - init
+    - nginx
+    - deploy_static

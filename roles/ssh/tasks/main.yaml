@@ -1,0 +1,13 @@
+
+- name: install openssh-server
+  apt:
+    name:
+    - openssh-server
+    state: present
+  notify: Restart openssh-server
+
+- name: Copy ssh config
+  copy:
+    src: sshd_config
+    dest: /etc/ssh/sshd_config
+  notify: Restart openssh-server
